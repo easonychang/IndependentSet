@@ -2,6 +2,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <queue>
 #include <unordered_map>
 #include <map>
 #include <random>
@@ -27,13 +28,20 @@ Vertex(int num);
 Vertex::Vertex(int num) : vertex(num),neighbor(0), independent(true){
 }
 
+//Min Heap's Comp
+class pairComp {
+public:
+bool operator()(Vertex lhs, Vertex rhs) const {
+        return lhs.neighbor.size() < rhs.neighbor.size();
+}
+};
 
 vector<int> independentSet(vector<Vertex> inputGraph) {
 
         vector<int> indepSet;
 
         //dclaring priority queue
-        std::priority_queue<pair<int,vector<int> >, vector<pair<int,vector<int> > >, pairComp> pq;
+        priority_queue<Vertex, vector<Vertex>, pairComp> pq;
 
         //push every pair from inputGraph into pq
         for(int i = 0; i < inputGraph.size(); i++) {
@@ -41,16 +49,16 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
         }
 
         //while pq is not empty, we keep popping
-        while(pq.size > 0) {
+        while(pq.size() > 0) {
                 //explore the node with lowest degree
                 Vertex toExplore = pq.top();
                 pq.pop();
 
                 //if toExplore is true, set neighbors to false
                 if(toExplore.independent == true) {
-                        for(int index = 0; index < toExplore.neighbors.size(); index++) {
+                        for(int index = 0; index < toExplore.neighbor.size(); index++) {
                                 for(int i = 0; i < inputGraph.size(); i++) {
-                                        if(inputGraph[i]== toExplore.neighbors[index]) {
+                                        if(inputGraph[i].vertex== toExplore.neighbor[index]) {
                                                 inputGraph[i].independent = false;
                                         }
                                 }
@@ -88,11 +96,3 @@ int main(){
         }
 
 }
-
-//Min Heap's Comp
-class pairComp {
-public:
-bool operator()(pair<int,vector<int> > lhs, pair<int,vector<int> > rhs) const {
-        return lhs.second.size() < rhs.second.size();
-}
-};
