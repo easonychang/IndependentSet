@@ -1,9 +1,9 @@
 /**
 
- NOTE: it is undirected so each connection goes two ways
+   NOTE: it is undirected so each connection goes two ways
 
- create separate function to build graphs or varying sizes?
-*/
+   create separate function to build graphs of varying sizes?
+ */
 
 
 
@@ -46,6 +46,8 @@ bool operator()(Vertex lhs, Vertex rhs) const {
 }
 };
 
+
+
 vector<int> independentSet(vector<Vertex> inputGraph) {
 
         vector<int> indepSet;
@@ -65,11 +67,10 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
                 pq.pop();
 
                 //if toExplore is true, set neighbors to false
-                if (toExplore.independent) {
+                if (toExplore.independent == true) {
                         for(int index = 0; index < toExplore.neighbors.size(); index++) {
                                 for(int i = 0; i < inputGraph.size(); i++) {
-                                        if(inputGraph[i].vertex==
-											toExplore.neighbors[index]) {
+                                        if(inputGraph[i].vertex==toExplore.neighbors[index]) {
                                                 inputGraph[i].independent = false;
                                         }
                                 }
@@ -82,31 +83,67 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
         return indepSet;
 }
 
-int main(){
-
+// build graph with numNodes nodes
+vector <Vertex> buildGraph (int numNodes) {
         vector <Vertex> graph;
-        //creating the inputGraph
-        srand(time(0));
-        for (int i = 0; i < 3; i++) {
-                cerr << "in for loop " << endl;			   
-                Vertex vertex = Vertex(i);
-                vector<int> vec;
-                for(int j = 0; j < 2; j++) {
-                        
-						int w = rand() % 2;
-						vec.push_back(w);
+        double count = 0;
+        double max = numNodes * numNodes * .5;
 
-                }
-                vertex.neighbors = vec;
-
-                graph.push_back(vertex);
+        // fills "graph" with vertices
+        for (int i = 0; i < numNodes; i++) {
+                graph.push_back(Vertex(i));
         }
 
-        cerr << "second" << endl;
+        // generate edges; loop indeices are offeset because want to ensure
+        // actual fifty percent odds
+        for (int j = 0; j < graph.size(); j++) {
+                // seeds the random obj
+
+                // performs that actual adds
+                for (int k = (j + 1); k < graph.size(); k++) {
+                        if (rand() % 2) {
+                                count++;
+                                // essentially perform a double add bc it's undirected
+                                graph.at(j).neighbors.push_back(k);
+                                graph.at(k).neighbors.push_back(j);
+
+                        }
+
+                }
+
+        }
+
+        double ratio = count / max;
+        cerr << count << " nodes were added out of a possible " << max << " nodes. this is " << ratio << endl;
+
+        return graph;
+}
+
+void printGraph (vector<Vertex> graph) {
+        for (int i = 0; i < graph.size(); i++) {
+                cerr << i << ": ";
+
+                for (int j = 0; j < graph.at(i).neighbors.size(); j++) {
+                        cerr << graph.at(i).neighbors.at(j) << " ";
+                }
+
+                cerr << endl;
+        }
+
+}
+
+int main() {
+//        srand(time(NULL));
+//        for (int in = 0; in < 10; in++) {
+//                cerr << "in " << in << endl;
+        vector<Vertex> graph = buildGraph(10);
+//        }
+        // printGraph(graph);
         //find the independentSet of this grpah
         vector<int> returned = independentSet(graph);
+
         for(int i = 0; i < returned.size(); i++) {
-                cout << returned[i] << "; " << endl;
+                cout << returned[i] << "; ";
         }
 
 }
