@@ -68,13 +68,13 @@ vector<int> independentSet(vector<AdjList> inputGraph) {
                 pq.push(inputGraph[i]);
         }
 
-
+        //while pq is not empty, we keep popping
         while(pq.size > 0) {
-                //exploring our first node, and make sure it is independent
+                //explore the node with lowest degree
                 toExplore = pq.top();
                 pq.pop();
 
-                //set neighbors to false
+                //if toExplore is true, set neighbors to false
                 if(toExplore.independent == true) {
                         for(int index = 0; index < toExlpore.neighbors.size(); index++) {
                                 for(int i = 0; i < inputGraph.size(); i++) {
@@ -83,6 +83,7 @@ vector<int> independentSet(vector<AdjList> inputGraph) {
                                         }
                                 }
                         }
+                        //add it to the return list
                         indepSet.insert(toExplore.vertex);
                 }
         }
