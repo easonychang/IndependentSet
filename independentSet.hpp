@@ -8,6 +8,21 @@
 
 using namespace std;
 
+
+class AdjList {
+public:
+int vertex;
+vector<int> neighbor;
+bool independent;
+
+};
+
+
+createRandomGraph(int n){
+
+
+}
+
 int main(){
         vector <pair<int,vector<int> > > g;
         //creating the inputGraph
@@ -33,7 +48,7 @@ bool operator()(pair<int,int> lhs, pair<int,int> rhs) const {
 }
 };
 
-vector<int> independentSet( vector<pair<int,vector<int> > > inputGraph) {
+vector<int> independentSet(vector<AdjList> inputGraph) {
 
         //dclaring priority queue
         std::priority_queue<pair<int,vector<int> >, vector<pair<int,int> >, pairComp> pq;
@@ -44,7 +59,5 @@ vector<int> independentSet( vector<pair<int,vector<int> > > inputGraph) {
         }
 
         toExplore = pq.top();
-
-
 
 }
