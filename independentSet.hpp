@@ -9,7 +9,7 @@
 using namespace std;
 
 //Each individual AdjList, a vector of AdjList would be our graph
-class AdjList {
+class Vertex {
 
 public:
 int vertex;
@@ -21,17 +21,17 @@ Node();
 };
 
 //Each node has a vertex, a neigbor array, and a bool saying if it's independent
-AdjList::Node(int num) : vertex(num),neighbor(0), independent(true){
+Vertex::Node(int num) : vertex(num),neighbor(0), independent(true){
 }
 
 
 int main(){
 
-        vector <AdjList> graph;
+        vector <Vertex> graph;
         //creating the inputGraph
 
         for(int i = 0; i < 3; i++) {
-                AdjList vertex = Node(i);
+                Vertex vertex = Node(i);
                 vector<int> vec;
                 for(int j = 0; j < 2; j++) {
                         vec[j] = rand()%2;
@@ -56,27 +56,27 @@ bool operator()(pair<int,int> lhs, pair<int,int> rhs) const {
 
 
 
-vector<int> independentSet(vector<AdjList> inputGraph) {
+vector<int> independentSet(vector<Vertex> inputGraph) {
 
         vector<int> indepSet;
 
         //dclaring priority queue
-        std::priority_queue<pair<int,vector<int> >, vector<pair<int,int> >, pairComp> pq;
+        priority_queue<pair<int,vector<int> >, vector<pair<int,int> >, pairComp> pq;
 
         //push every pair from inputGraph into pq
-        for(i = 0; i < inputGraph.size(); i++) {
+        for(int i = 0; i < inputGraph.size(); i++) {
                 pq.push(inputGraph[i]);
         }
 
         //while pq is not empty, we keep popping
         while(pq.size > 0) {
                 //explore the node with lowest degree
-                toExplore = pq.top();
+                Vertex toExplore = pq.top();
                 pq.pop();
 
                 //if toExplore is true, set neighbors to false
                 if(toExplore.independent == true) {
-                        for(int index = 0; index < toExlpore.neighbors.size(); index++) {
+                        for(int index = 0; index < toExplore.neighbors.size(); index++) {
                                 for(int i = 0; i < inputGraph.size(); i++) {
                                         if(inputGraph[i]== toExplore.neighbors[index]) {
                                                 inputGraph[i].independent = false;
