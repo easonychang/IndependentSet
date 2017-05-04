@@ -57,7 +57,8 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
 
         //push every pair from inputGraph into pq
         for(int i = 0; i < inputGraph.size(); i++) {
-                pq.push(inputGraph[i]);
+                Vertex &v = inputGraph[i];
+                pq.push(v);
         }
 
         //while pq is not empty, we keep popping
@@ -67,13 +68,13 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
                 pq.pop();
 
                 //if toExplore is true, set neighbors to false
-                if (toExplore.independent == true) {
+                if (inputGraph[toExplore.vertex].independent == true) {
                         for(int index = 0; index < toExplore.neighbors.size(); index++) {
-                                for(int i = 0; i < inputGraph.size(); i++) {
-                                        if(inputGraph[i].vertex==toExplore.neighbors[index]) {
-                                                inputGraph[i].independent = false;
-                                        }
-                                }
+
+                                //cerr << "setting " << inputGraph[toExplore.neighbors[index]].vertex << endl;
+                                inputGraph[toExplore.neighbors[index]].independent= false;
+
+                                //  inputGraph[i].independent = false;
                         }
                         //add it to the return list
                         indepSet.push_back(toExplore.vertex);
@@ -134,16 +135,17 @@ void printGraph (vector<Vertex> graph) {
 
 int main() {
 //        srand(time(NULL));
-//        for (int in = 0; in < 10; in++) {
-//                cerr << "in " << in << endl;
-        vector<Vertex> graph = buildGraph(10);
-//        }
-        // printGraph(graph);
+        vector<Vertex> graph = buildGraph(1000);
+        //printGraph(graph);
         //find the independentSet of this grpah
         vector<int> returned = independentSet(graph);
 
+        cout << "{";
         for(int i = 0; i < returned.size(); i++) {
-                cout << returned[i] << "; ";
+                cout << returned[i] << " ";
         }
+        cout << "}" << endl;
+
+        cout << "The size of the independent set is " << returned.size() << "." <<endl;
 
 }
