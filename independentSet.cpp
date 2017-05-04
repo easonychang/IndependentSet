@@ -1,3 +1,12 @@
+/**
+
+ NOTE: it is undirected so each connection goes two ways
+
+ create separate function to build graphs or varying sizes?
+*/
+
+
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -5,7 +14,6 @@
 #include <queue>
 #include <unordered_map>
 #include <map>
-//#include <random>
 #include <stdlib.h>
 #include <time.h>
 
