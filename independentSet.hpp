@@ -8,8 +8,9 @@
 
 using namespace std;
 
-
+//Each individual AdjList, a vector of AdjList would be our graph
 class AdjList {
+
 public:
 int vertex;
 vector<int> neighbor;
@@ -19,29 +20,29 @@ Node();
 
 };
 
-AdjList::Node(int num) : vertex(num),neighbor(0), independent(false){
+//Each node has a vertex, a neigbor array, and a bool saying if it's independent
+AdjList::Node(int num) : vertex(num),neighbor(0), independent(true){
 }
 
-createRandomGraph(int n){
-
-
-}
 
 int main(){
-        /*
-           vector <AdjList> g;
-           //creating the inputGraph
-           for(int i = 0; i < 3; i++) {
+
+        vector <AdjList> graph;
+        //creating the inputGraph
+
+        for(int i = 0; i < 3; i++) {
+                AdjList vertex = Node(i);
                 vector<int> vec;
                 for(int j = 0; j < 2; j++) {
                         vec[j] = rand()%2;
                 }
-                auto gpair = pair<int, vector<int> >(i,vec);
-                g[i] = gpair;
-           }
-           independentSet(g);
+                vertex.neighbor = vec;
 
-         */
+                graph.insert(vertex);
+        }
+
+        //find the independentSet of this grpah
+        independentSet(graph);
 
 }
 
@@ -53,7 +54,11 @@ bool operator()(pair<int,int> lhs, pair<int,int> rhs) const {
 }
 };
 
+
+
 vector<int> independentSet(vector<AdjList> inputGraph) {
+
+        vector<int> indepSet;
 
         //dclaring priority queue
         std::priority_queue<pair<int,vector<int> >, vector<pair<int,int> >, pairComp> pq;
@@ -63,6 +68,25 @@ vector<int> independentSet(vector<AdjList> inputGraph) {
                 pq.push(inputGraph[i]);
         }
 
-        toExplore = pq.top();
+
+        while(pq.size > 0) {
+                //exploring our first node, and make sure it is independent
+                toExplore = pq.top();
+                pq.pop();
+
+                //set neighbors to false
+                if(toExplore.independent == true) {
+                        for(int index = 0; index < toExlpore.neighbors.size(); index++) {
+                                for(int i = 0; i < inputGraph.size(); i++) {
+                                        if(inputGraph[i]== toExplore.neighbors[index]) {
+                                                inputGraph[i].independent = false;
+                                        }
+                                }
+                        }
+                        indepSet.insert(toExplore.vertex);
+                }
+        }
+
+        return indepSet;
 
 }
