@@ -15,8 +15,12 @@ int vertex;
 vector<int> neighbor;
 bool independent;
 
+Node();
+
 };
 
+AdjList::Node(int num) : vertex(num),neighbor(0), independent(false){
+}
 
 createRandomGraph(int n){
 
@@ -24,19 +28,20 @@ createRandomGraph(int n){
 }
 
 int main(){
-        vector <pair<int,vector<int> > > g;
-        //creating the inputGraph
-        for(int i = 0; i < 3; i++) {
+        /*
+           vector <AdjList> g;
+           //creating the inputGraph
+           for(int i = 0; i < 3; i++) {
                 vector<int> vec;
                 for(int j = 0; j < 2; j++) {
                         vec[j] = rand()%2;
                 }
                 auto gpair = pair<int, vector<int> >(i,vec);
                 g[i] = gpair;
-        }
-        independentSet(g);
+           }
+           independentSet(g);
 
-
+         */
 
 }
 
