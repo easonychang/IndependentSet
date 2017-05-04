@@ -12,48 +12,20 @@ using namespace std;
 class Vertex {
 
 public:
-int vertex;
-vector<int> neighbor;
-bool independent;
 
-Node();
+int vertex;//vertex number
+vector<int> neighbor; //its neighbors
+bool independent; //if it's independent
+
+//Construction of a vertex
+Vertex(int num);
 
 };
 
+//Constructor
 //Each node has a vertex, a neigbor array, and a bool saying if it's independent
-Vertex::Node(int num) : vertex(num),neighbor(0), independent(true){
+Vertex::Vertex(int num) : vertex(num),neighbor(0), independent(true){
 }
-
-
-int main(){
-
-        vector <Vertex> graph;
-        //creating the inputGraph
-
-        for(int i = 0; i < 3; i++) {
-                Vertex vertex = Node(i);
-                vector<int> vec;
-                for(int j = 0; j < 2; j++) {
-                        vec[j] = rand()%2;
-                }
-                vertex.neighbor = vec;
-
-                graph.insert(vertex);
-        }
-
-        //find the independentSet of this grpah
-        independentSet(graph);
-
-}
-
-//Min Heap's Comp
-class pairComp {
-public:
-bool operator()(pair<int,int> lhs, pair<int,int> rhs) const {
-        return lhs.second.size() < rhs.second.size();
-}
-};
-
 
 
 vector<int> independentSet(vector<Vertex> inputGraph) {
@@ -61,7 +33,7 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
         vector<int> indepSet;
 
         //dclaring priority queue
-        priority_queue<pair<int,vector<int> >, vector<pair<int,int> >, pairComp> pq;
+        std::priority_queue<pair<int,vector<int> >, vector<pair<int,vector<int> > >, pairComp> pq;
 
         //push every pair from inputGraph into pq
         for(int i = 0; i < inputGraph.size(); i++) {
@@ -84,10 +56,43 @@ vector<int> independentSet(vector<Vertex> inputGraph) {
                                 }
                         }
                         //add it to the return list
-                        indepSet.insert(toExplore.vertex);
+                        indepSet.push_back(toExplore.vertex);
                 }
         }
 
         return indepSet;
 
 }
+
+
+int main(){
+
+        vector <Vertex> graph;
+        //creating the inputGraph
+
+        for(int i = 0; i < 3; i++) {
+                Vertex vertex = Vertex(i);
+                vector<int> vec;
+                for(int j = 0; j < 2; j++) {
+                        vec[j] = rand()%2;
+                }
+                vertex.neighbor = vec;
+
+                graph.push_back(vertex);
+        }
+
+        //find the independentSet of this grpah
+        vector<int> returned = independentSet(graph);
+        for(int i = 0; i < returned.size(); i++) {
+                cout << returned[i] << "; ";
+        }
+
+}
+
+//Min Heap's Comp
+class pairComp {
+public:
+bool operator()(pair<int,vector<int> > lhs, pair<int,vector<int> > rhs) const {
+        return lhs.second.size() < rhs.second.size();
+}
+};
