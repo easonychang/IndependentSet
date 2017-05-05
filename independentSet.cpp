@@ -136,9 +136,9 @@ void printGraph (vector<Vertex> graph) {
 int main() {
         srand(time(NULL));
         long num = 128;
-        for(int i = 0; i < 17; i++) {
-                vector<Vertex> graph = buildGraph(num);
-                cerr << "num is" << num << endl;
+        for(int i = 0; i < 10; i++) {
+                vector<Vertex> graph = buildGraph(num*1.5);
+                cerr << "num is" << num*1.5 << endl;
 
 
 
