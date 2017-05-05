@@ -134,18 +134,26 @@ void printGraph (vector<Vertex> graph) {
 }
 
 int main() {
-//        srand(time(NULL));
-        vector<Vertex> graph = buildGraph(1000);
-        //printGraph(graph);
-        //find the independentSet of this grpah
-        vector<int> returned = independentSet(graph);
+        srand(time(NULL));
+        long num = 128;
+        for(int i = 0; i < 17; i++) {
+                vector<Vertex> graph = buildGraph(num);
+                cerr << "num is" << num << endl;
 
-        cout << "{";
-        for(int i = 0; i < returned.size(); i++) {
-                cout << returned[i] << " ";
+
+
+                //printGraph(graph);
+                //find the independentSet of this grpah
+                vector<int> returned = independentSet(graph);
+
+                cout << "{";
+                for(int i = 0; i < returned.size(); i++) {
+                        cout << returned[i] << " ";
+                }
+                cout << "}" << endl;
+
+                cout << "The size of the independent set is " << returned.size() << "." <<endl;
+                num = num * 2;
         }
-        cout << "}" << endl;
-
-        cout << "The size of the independent set is " << returned.size() << "." <<endl;
 
 }
