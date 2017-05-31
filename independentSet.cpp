@@ -133,56 +133,58 @@ void printGraph (vector<Vertex> graph) {
 
 }
 
-vector<int> independentSetBT(vector<Vertex> inputGraph){
-}
-
-if(inputGraph.size() == 0) return inputGraph;
-vector<Vertex> copy1;
-vector<Vertex> copy2;
+vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
 
 
-
-for(int i = 0; i < inputGraph.size(); i++) {
-        copy1[i] = inputGraph[i];
-        copy2[i] = inputGraph[i];
-}
+        if(inputGraph.size() == 0) {
+                return inputGraph;
+        }
+        vector<Vertex> copy1;
+        vector<Vertex> copy2;
 
 
 
-vector<Vertex> S_1;
-vector<Vertex> S_2;
+        for(int i = 0; i < inputGraph.size(); i++) {
+                copy1[i] = inputGraph[i];
+                copy2[i] = inputGraph[i];
+        }
 
-Vertex v = inputGraph[0];
 
-vector<int> neighb = v.neighbors;
 
-S_1.insert(v);
+        vector<Vertex> s_1;
+        vector<Vertex> s_2;
 
-copy1.remove(v);
+        Vertex v = inputGraph[0];
 
- for(int i = 0; i < nieghb.size(); i++){
-    for(int j = 0; j < copy1.size(); j++){
-      if(copy[i].vertex == neib[i]){
-        copy1.remove(neighb[i]);
-        j = copy1.size();
-      }
-    }
-  }
+        vector<int> neighb = v.neighbors;
 
-S_1.insert(independentSet(copy1));
+        s_1.push_back(v);
 
-if(neighb.size() == 0 || neighb.size() == 1) {
-        return S_1;
-}
-copy2.remove(v);
+        copy1.remove(v);
 
-S_2.insert(independentSet(copy2));
+        for(int i = 0; i < neighb.size(); i++) {
+                for(int j = 0; j < copy1.size(); j++) {
+                        if(copy1[i].vertex == neib[i]) {
+                                copy1.remove(neighb[i]);
+                                j = copy1.size();
+                        }
+                }
+        }
 
-if(S_2.size() > S_1.size()) {
-        return S_2;
-} else {
-        return S_1;
-}
+        s_1.push_back(independentSetBT(copy1));
+
+        if(neighb.size() == 0 || neighb.size() == 1) {
+                return s_1;
+        }
+        copy2.remove(v);
+
+        s_2.push_back(independentSetBT(copy2));
+
+        if(s_2.size() > s_1.size()) {
+                return s_2;
+        } else {
+                return s_1;
+        }
 }
 
 int main() {
