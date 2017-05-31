@@ -160,12 +160,12 @@ vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
 
         s_1.push_back(v);
 
-        copy1.remove(v);
+        copy1.erase(copy1.begin());
 
         for(int i = 0; i < neighb.size(); i++) {
                 for(int j = 0; j < copy1.size(); j++) {
-                        if(copy1[i].vertex == neib[i]) {
-                                copy1.remove(neighb[i]);
+                        if(copy1[j].vertex == neib[i]) {
+                                copy1.erase(copy1.begin()+j);
                                 j = copy1.size();
                         }
                 }
@@ -176,7 +176,7 @@ vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
         if(neighb.size() == 0 || neighb.size() == 1) {
                 return s_1;
         }
-        copy2.remove(v);
+        copy2.remove(copy2.begin());
 
         s_2.push_back(independentSetBT(copy2));
 
