@@ -139,16 +139,8 @@ vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
         if(inputGraph.size() == 0) {
                 return inputGraph;
         }
-        vector<Vertex> copy1;
-        vector<Vertex> copy2;
-
-
-
-        for(int i = 0; i < inputGraph.size(); i++) {
-                copy1[i] = inputGraph[i];
-                copy2[i] = inputGraph[i];
-        }
-
+        vector<Vertex> copy1(inputGraph);
+        vector<Vertex> copy2(inputGraph);
 
 
         vector<Vertex> s_1;
@@ -190,10 +182,10 @@ vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
 
 int main() {
         srand(time(NULL));
-        long num = 128;
+        long num = 10;
         for(int i = 0; i < 10; i++) {
-                vector<Vertex> graph = buildGraph(num*1.5);
-                //cerr << "num is" << num*1.5 << endl;
+                vector<Vertex> graph = buildGraph(num);
+                cerr << "num is " << num << endl;
 
 
 
@@ -205,6 +197,7 @@ int main() {
                 cout << "{";
                 for(int i = 0; i < returned.size(); i++) {
                         cout << returned[i].vertex << " ";
+                        //cout << returned[i] << " ";
                 }
                 cout << "}" << endl;
 
