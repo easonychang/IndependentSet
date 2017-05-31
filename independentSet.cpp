@@ -115,7 +115,7 @@ vector <Vertex> buildGraph (int numNodes) {
         }
 
         double ratio = count / max;
-        cerr << count << " nodes were added out of a possible " << max << " nodes. this is " << ratio << endl;
+        //cerr << count << " nodes were added out of a possible " << max << " nodes. this is " << ratio << endl;
 
         return graph;
 }
@@ -164,21 +164,22 @@ vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
 
         for(int i = 0; i < neighb.size(); i++) {
                 for(int j = 0; j < copy1.size(); j++) {
-                        if(copy1[j].vertex == neib[i]) {
+                        if(copy1[j].vertex == neighb[i]) {
                                 copy1.erase(copy1.begin()+j);
                                 j = copy1.size();
                         }
                 }
         }
 
-        s_1.push_back(independentSetBT(copy1));
+        s_1 = independentSetBT(copy1);
+        s_1.push_back(v);
 
         if(neighb.size() == 0 || neighb.size() == 1) {
                 return s_1;
         }
-        copy2.remove(copy2.begin());
+        copy2.erase(copy2.begin());
 
-        s_2.push_back(independentSetBT(copy2));
+        s_2 = independentSetBT(copy2);
 
         if(s_2.size() > s_1.size()) {
                 return s_2;
@@ -192,22 +193,22 @@ int main() {
         long num = 128;
         for(int i = 0; i < 10; i++) {
                 vector<Vertex> graph = buildGraph(num*1.5);
-                cerr << "num is" << num*1.5 << endl;
+                //cerr << "num is" << num*1.5 << endl;
 
 
 
                 //printGraph(graph);
                 //find the independentSet of this grpah
-                vector<int> returned = independentSetBT(graph);
+                //vector<int> returned = independentSet(graph);
+                vector<Vertex> returned = independentSetBT(graph);
 
                 cout << "{";
                 for(int i = 0; i < returned.size(); i++) {
-                        cout << returned[i] << " ";
+                        cout << returned[i].vertex << " ";
                 }
                 cout << "}" << endl;
 
                 cout << "The size of the independent set is " << returned.size() << "." <<endl;
                 num = num * 2;
         }
-
 }
