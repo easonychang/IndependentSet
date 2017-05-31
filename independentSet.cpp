@@ -185,7 +185,7 @@ int main() {
         long num = 10;
         for(int i = 0; i < 10; i++) {
                 vector<Vertex> graph = buildGraph(num);
-                cerr << "num is " << num << endl;
+                cerr << "num of nodes is " << num << endl;
 
 
 
