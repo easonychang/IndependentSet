@@ -133,6 +133,53 @@ void printGraph (vector<Vertex> graph) {
 
 }
 
+vector<int> independentSetBT(vector<Vertex> inputGraph){
+}
+
+if(inputGraph.size() == 0) return inputGraph;
+vector<Vertex> copy1;
+vector<Vertex> copy2;
+
+
+
+for(int i = 0; i < inputGraph.size(); i++) {
+        copy1[i] = inputGraph[i];
+        copy2[i] = inputGraph[i];
+}
+
+
+
+vector<Vertex> S_1;
+vector<Vertex> S_2;
+
+Vertex v = inputGraph[0];
+
+vector<int> neighb = v.neighbors;
+
+S_1.insert(v);
+
+copy1.remove(v);
+
+for(int i = 0; i < nieghb.size(); i++) {
+        copy1.remove(neighb[i]);
+}
+
+S_1.insert(independentSet(copy1));
+
+if(neighb.size() == 0 || neighb.size() == 1) {
+        return S_1;
+}
+copy2.remove(v);
+
+S_2.insert(independentSet(copy2));
+
+if(S_2.size() > S_1.size()) {
+        return S_2;
+} else {
+        return S_1;
+}
+}
+
 int main() {
         srand(time(NULL));
         long num = 128;
@@ -144,7 +191,7 @@ int main() {
 
                 //printGraph(graph);
                 //find the independentSet of this grpah
-                vector<int> returned = independentSet(graph);
+                vector<int> returned = independentSetBT(graph);
 
                 cout << "{";
                 for(int i = 0; i < returned.size(); i++) {
