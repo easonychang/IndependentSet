@@ -24,7 +24,7 @@ class Vertex {
 
 public:
 
-int vertex;//vertex number
+int vertex;//vertex number/name
 vector<int> neighbors; //its neighbors
 bool independent; //if it's independent
 
