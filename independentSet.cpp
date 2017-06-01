@@ -182,7 +182,7 @@ vector<Vertex> independentSetBT(vector<Vertex> inputGraph){
 
 int main() {
         srand(time(NULL));
-        long num = 10;
+        long num = 2;
         for(int i = 0; i < 10; i++) {
                 vector<Vertex> graph = buildGraph(num);
                 cerr << "num of nodes is " << num << endl;
@@ -191,17 +191,19 @@ int main() {
 
                 //printGraph(graph);
                 //find the independentSet of this grpah
-                //vector<int> returned = independentSet(graph);
-                vector<Vertex> returned = independentSetBT(graph);
+                vector<int> returned = independentSet(graph);
+                vector<Vertex> returned1 = independentSetBT(graph);
 
+/*
                 cout << "{";
                 for(int i = 0; i < returned.size(); i++) {
-                        cout << returned[i].vertex << " ";
-                        //cout << returned[i] << " ";
+                        cout << returned1[i].vertex << " ";
+                        cout <<returned[i] << " ";
                 }
                 cout << "}" << endl;
-
-                cout << "The size of the independent set is " << returned.size() << "." <<endl;
+ */
+                cout << "The size of the independent set is " << returned.size() << "GREEDY" <<endl;
+                cout << "The size of the independent set is " << returned1.size() << "BT" <<endl;
                 num = num * 2;
         }
 }
