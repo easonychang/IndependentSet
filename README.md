@@ -43,21 +43,18 @@ are not likely to be efficient.
 
 Greedy Heuristic	              | Backtracking Algorithm
 
-Nodes (n)     | Independent Set (|S|) | Nodes (n)     | Independent Set (|S|)
-------------- | --------------------- | ------------- | -------------
-4  	      | 1     		      | 4  	      | 2     
-8             | 2    		      | 8             | 3     
-16            | 3    		      | 16            | 5     
-32  	      | 3    		      | 32  	      | 6     
-64  	      | 5     		      | 64  	      | 7     
-128  	      | 6     		      | 128  	      | 10     
-256           | 7     		      | 256           | 11     
-512           | 9     		      | 512           | Took too long to run  
+Nodes (n)| Independent Set (|S|) | Nodes (n) | Independent Set (|S|)
+:---: | :---: | :---: | :---:
+4  | 1  | 4 | 2  
+8  | 2  | 8 | 3     
+16 | 3  | 16 | 5     
+32 | 3  | 32 | 6     
+64 | 5  | 64 | 7     
+128 |6  | 128| 10     
+256 | 7 | 256 | 11     
+512 | 9 | 512 | Took too long to run  
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+
 
 
 # Extension
