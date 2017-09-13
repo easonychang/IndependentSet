@@ -9,7 +9,12 @@ Test it on random undirected graphs where each possible edge is in the graph wit
 This is a real life application using the independent set algorithm.
 
 ### Problem: 
-	Given a data set of all users, assuming announcements made by a user will be seen by all their followers, find how many users are required to make the announcement for all the people on the same network to see the announcement. Therefore, given a graph, find a subset of vertices, S, such that every vertex not in S is adjacent to at least one vertex not in S is adjacent to at least one vertex in S.
+	Given a data set of all users, assuming announcements made by a user
+	will be seen by all their followers, find how many users are required 
+	to make the announcement for all the people on the same network to see 
+	the announcement. Therefore, given a graph, find a subset of vertices,
+	S, such that every vertex not in S is adjacent to at least one vertex
+	not in S is adjacent to at least one vertex in S.
 
 ### How we solved it: 
 	We have implmeneted a simple greedy algorithm, and to find the dominant set of vertices and return it. To do that, we marked all the vertices as "uncovered" in each User's constructor. we then initialize the an empty vector. While the number of covered edges is not the same as the amount of vertices in allUser, then we iterate through allUser to find the user vertex with the most followers, also if a vertex cover field is true, then we simply increment the amount of covered vertex and continue with the loop without trying to find the vertex.
