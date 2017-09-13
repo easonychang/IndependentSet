@@ -1,4 +1,4 @@
-https://user-images.githubusercontent.com/17519982/30360875-cf3169b6-9808-11e7-8d0b-8bc837974acf.png
+![alt text]https://user-images.githubusercontent.com/17519982/30360875-cf3169b6-9808-11e7-8d0b-8bc837974acf.png
 # IndependentSet
 This is a greedy algorithm for maximum independent set based on including nodes of smallest degree. 
 
@@ -8,7 +8,7 @@ Test it on random undirected graphs where each possible edge is in the graph wit
 
 This is a real life application using the independent set algorithm.
 
-Problem: 
+### Problem: 
 	Given a data set of all users, assuming announcements made by a
 user will be seen by all their followers, find how many users are required to 
 make the announcement for all the people on the same network to see the
@@ -16,7 +16,7 @@ announcement. Therefore, given a graph, find a subset of vertices, S, such that
 every vertex not in S is adjacent to at least one vertex not in S is adjacent 
 to at least one vertex in S.
 
-How we solved it: 
+### How we solved it: 
 	We have implmeneted a simple greedy algorithm, and to find the dominant
 set of vertices and return it. To do that, we marked all the vertices as
 "uncovered" in each User's constructor. we then initialize the an empty
@@ -32,7 +32,7 @@ set their covered field to true as well. Then at the end we return the sets
 with all the vertices that was used to cover the entire graph.
 
 
-How we tested our program:
+### How we tested our program:
 	I came up with some general test cases, the first being smallgraph.tsv,
 it contains 4 nodes, 1-(3), 2-(3,4), 3-(1,2), 4-(2). The 1,2,3,4 are vertices
 of the grpah, and - denotes edge relationship. It is a directed graph.
@@ -55,7 +55,7 @@ exception of Node 6 are all explored. Then we go and explore Node 6.
 In our output file it gives us the correct output. 
 
 
-How to run this program:
+### How to run this program:
 
 To run the program please use the following command.
 ./extension file1 file2
