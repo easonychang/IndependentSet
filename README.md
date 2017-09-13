@@ -67,6 +67,8 @@ Nodes | Num of Independent Set
 128 | 10
 256 | 11
 
+![alt text](https://user-images.githubusercontent.com/17519982/30403029-a48176fc-9894-11e7-9f18-1e579626f995.png)
+![alt text](https://user-images.githubusercontent.com/17519982/30403030-a48bdd04-9894-11e7-9df9-9f18ecf93213.png)
 
 
 # Extension
