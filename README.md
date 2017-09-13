@@ -1,3 +1,4 @@
+https://user-images.githubusercontent.com/17519982/30360875-cf3169b6-9808-11e7-8d0b-8bc837974acf.png
 # IndependentSet
 This is a greedy algorithm for maximum independent set based on including nodes of smallest degree. 
 
