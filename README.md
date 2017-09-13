@@ -58,8 +58,14 @@ Nodes(n) | Independent Set(|S|) | Nodes(n) | Independent Set(|S|)
 
 First Header | Second Header
 ------------ | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+4  | 1
+8  | 2
+16 | 3
+32 | 3
+64 | 5
+128 | 6
+256 | 7
+512 | 9
 
 # Extension
 
