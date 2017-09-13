@@ -44,8 +44,8 @@ are not likely to be efficient.
 Greedy Heuristic | Backtracking Algorithm
 
 
-Nodes (n) | Independent Set (|S|) | Nodes (n) | Independent Set (|S|)
-:---: | :---: | :---: | :---:
+Nodes(n) | Independent Set(|S|) | Nodes(n) | Independent Set(|S|)
+---------- | ---------- | ---------- | ----------
 4  | 1 | 4 | 2  
 8  | 2 | 8 | 3 
 16 | 3 | 16 | 5 
