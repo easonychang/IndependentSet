@@ -41,16 +41,17 @@ are not likely to be efficient.
 	algorithm finds on the same “randomized graph”, which is an indication that it’s giving us 
 	the optimal solution as discussed in class. 
 
-Greedy Heuristic	              | Backtracking Algorithm
+Greedy Heuristic | Backtracking Algorithm
 
-Nodes (n)| Independent Set (|S|) | Nodes (n) | Independent Set (|S|)
+
+Nodes (n) | Independent Set (|S|) | Nodes (n) | Independent Set (|S|)
 :---: | :---: | :---: | :---:
-4  | 1  | 4 | 2  
-8  | 2  | 8 | 3     
-16 | 3  | 16 | 5     
-32 | 3  | 32 | 6     
-64 | 5  | 64 | 7     
-128 |6  | 128| 10     
+4  | 1 | 4 | 2  
+8  | 2 | 8 | 3     
+16 | 3 | 16 | 5     
+32 | 3 | 32 | 6     
+64 | 5 | 64 | 7     
+128 | 6 | 128 | 10     
 256 | 7 | 256 | 11     
 512 | 9 | 512 | Took too long to run  
 
