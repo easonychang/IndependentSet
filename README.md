@@ -54,6 +54,11 @@ Nodes (n)     | Independent Set (|S|) | Nodes (n)     | Independent Set (|S|)
 256           | 7     		      | 256           | 11     
 512           | 9     		      | 512           | Took too long to run  
 
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
 
 # Extension
 
