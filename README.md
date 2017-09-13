@@ -42,6 +42,7 @@ are not likely to be efficient.
 	the optimal solution as discussed in class. 
 
 Greedy Heuristic	              | Backtracking Algorithm
+
 Nodes (n)     | Independent Set (|S|) | Nodes (n)     | Independent Set (|S|)
 ------------- | --------------------- | ------------- | -------------
 4  	      | 1     		      | 4  	      | 2     
