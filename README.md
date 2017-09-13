@@ -56,7 +56,10 @@ Nodes(n) | Independent Set(|S|) | Nodes(n) | Independent Set(|S|)
 512 | 9 | 512 | Took too long to run  
 
 
-
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
 
 # Extension
 
